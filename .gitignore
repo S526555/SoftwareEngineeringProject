@@ -1,0 +1,10 @@
+
+node_modules/
+
+# Ignore all .vscode files
+.history/*
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
