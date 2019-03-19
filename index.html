@@ -3,6 +3,7 @@
 
 <head>
   <title>Sign In/Out</title>
+  <script src="tableToExcel.js"></script>
   <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="/socket.io/socket.io.js"></script>
@@ -81,7 +82,9 @@
     </tbody>
   </table>
 
-  <button id="btnExcel" class="btn btn-primary">Generate spreadsheet</button>
+<a id="dlink"  style="display:none;"></a>
+
+  <button id="btnExcel" class="btn btn-primary" onclick="tableToExcel('dataTable', 'name', 'file.xls')">Generate spreadsheet</button>
 
   <script>
     function addToTable(a, b, c, d, e) {
@@ -103,14 +106,7 @@
         table.rows[index].cells[0].innerHTML = "<strong>"+ parseInt(table.rows.length-index)+"</strong>";
       }
     }
-    document.getElementById('btnExcel').addEventListener('click', function () {
-      var a = document.getElementById('stuNum').value
-      var b = document.getElementById('start').value
-      var c = document.getElementById('timeIn').value
-      var d = document.getElementById('timeOut').value
-      var e = document.getElementById('reason').value
-      addToTable(a, b, c, d, e)
-    })
+
     function insert(){
       var a = document.getElementById('stuNum').value
       var b = document.getElementById('start').value
@@ -119,6 +115,8 @@
       var e = document.getElementById('reason').value
       addToTable(a, b, c, d, e)
     }
+	
+
   </script>
 
 </body>
