@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const path = require('path')
 const hostname = '192.168.56.1'
 const port = 3002
 

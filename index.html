@@ -6,7 +6,7 @@
   <script src="tableToExcel.js"></script>
   <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="/socket.io/socket.io.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="public/app.js"></script>
 </head>
@@ -82,9 +82,10 @@
     </tbody>
   </table>
 
-<a id="dlink"  style="display:none;"></a>
+  <a id="dlink" style="display:none;"></a>
 
-  <button id="btnExcel" class="btn btn-primary" onclick="tableToExcel('dataTable', 'name', 'file.xls')">Generate spreadsheet</button>
+  <button id="btnExcel" class="btn btn-primary" onclick="tableToExcel('dataTable', 'name', 'file.xls')">Generate
+    spreadsheet</button>
 
   <script>
     function addToTable(a, b, c, d, e) {
@@ -102,12 +103,12 @@
       cell3.innerHTML = c;
       cell4.innerHTML = d;
       cell5.innerHTML = e;
-      for (let index =1; index <= table.rows.length-1; index++) {
-        table.rows[index].cells[0].innerHTML = "<strong>"+ parseInt(table.rows.length-index)+"</strong>";
+      for (let index = 1; index <= table.rows.length - 1; index++) {
+        table.rows[index].cells[0].innerHTML = "<strong>" + parseInt(table.rows.length - index) + "</strong>";
       }
     }
 
-    function insert(){
+    function insert() {
       var a = document.getElementById('stuNum').value
       var b = document.getElementById('start').value
       var c = document.getElementById('timeIn').value
@@ -115,7 +116,18 @@
       var e = document.getElementById('reason').value
       addToTable(a, b, c, d, e)
     }
-	
+
+    var tableToExcel = (function () {
+      var uri = 'data:application/vnd.ms-excel;base64,'
+        , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+        , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+        , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+      return function (table, name) {
+        if (!table.nodeType) table = document.getElementById(table)
+        var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+        window.location.href = uri + base64(format(template, ctx))
+      }
+    })()
 
   </script>
 
