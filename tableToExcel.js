@@ -1,4 +1,4 @@
-	//This section of code taken from the following location:
+	//This section of code inspired from the following location:
 	//https://gist.github.com/insin/1031969
 	var tableToExcel = (function() {
         var uri = 'data:application/vnd.ms-excel;base64,'
