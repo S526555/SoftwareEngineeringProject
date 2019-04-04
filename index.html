@@ -11,6 +11,32 @@
   <script src="public/app.js"></script>
 </head>
 
+<div class="foo green"></div>
+
+<style>
+.foo {
+  float:right;
+  width: 1307px;
+  height: 51px;
+}
+
+.green {
+  background: green;
+}
+</style>
+
+<div id="NWPic">
+  <img src="Northwest.png" width = "40" height = "50" class="ribbon"/>
+</div>
+
+<style>
+#NWPic {
+  border: 1px solid;
+  border-right: -5px solid;
+  border-color: green;
+}
+</style>
+
 <main class="container-fluid">
   <h1>Check-in Sheet - Mabel Cook</h1>
 
@@ -23,18 +49,27 @@
   </p>
 
   <p>Input time in
-    <input id="timeIn" type="text" value="">
+    <input id="timeIn" type="time" value="">
   </p>
 
   <p>Input time out
-    <input id="timeOut" type="text" value="">
+    <input id="timeOut" type="time" value="">
   </p>
   <p>Input reason for ending tour
-    <input id="reason" type="text" value="">
+    <select id="reason" name="reason">
+      <option value="Tour">Giving a Tour</option>
+      <option value="Eating">Lunch/Dinner</option>
+      <option value="Sick">I am feeling sick</option>
+    </select>
   </p>
 
   <button id="btnAdd" class="btn btn-primary" onclick="insert()">Add to table</button>
-
+  <style>
+    #btnAdd {
+      border: 1px solid black;
+      float:left;
+    }
+    </style>
 </main>
 
 <body>
@@ -62,6 +97,13 @@
 
   <button id="btnExcel" class="btn btn-primary" onclick="tableToExcel('dataTable', 'name', 'file.xls')">Generate
     spreadsheet</button>
+    <style>
+      #btnExcel {
+        position:relative;
+        left: 1040px;
+        border: 1px solid black;
+      }
+      </style>
 
   <script>
     function addToTable(a, b, c, d, e) {
