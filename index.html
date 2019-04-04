@@ -70,6 +70,16 @@
       float:left;
     }
     </style>
+
+  <button id="btnExcel" class="btn btn-primary" onclick="tableToExcel('dataTable', 'name', 'file.xls')">Generate
+  spreadsheet</button>
+  <style>
+    #btnExcel {
+      position:relative;
+      left: 1040px;
+      border: 1px solid black;
+    }
+    </style>
 </main>
 
 <body>
@@ -94,16 +104,6 @@
   </table>
 
   <a id="dlink" style="display:none;"></a>
-
-  <button id="btnExcel" class="btn btn-primary" onclick="tableToExcel('dataTable', 'name', 'file.xls')">Generate
-    spreadsheet</button>
-    <style>
-      #btnExcel {
-        position:relative;
-        left: 1040px;
-        border: 1px solid black;
-      }
-      </style>
 
   <script>
     function addToTable(a, b, c, d, e) {
