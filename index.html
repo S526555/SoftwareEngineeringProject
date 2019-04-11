@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang='en'>
 
+<!--
+This is the baseline for the webpage
+-->
 <head>
   <title>Sign In/Out</title>
   <script src="tableToExcel.js"></script>
@@ -11,6 +14,9 @@
   <script src="public/app.js"></script>
 </head>
 
+<!--
+  This is for the green background bar on the top of the webpage
+-->
 <div class="foo green"></div>
 
 <style>
@@ -26,7 +32,9 @@
   background: green;
 }
 </style>
-
+<!--
+  Picture from the project folder
+-->
 <div id="NWPic">
   <img src="NWLogo.jpg" width = "175" height = "50" class="ribbon"/>
 </div>
@@ -38,6 +46,9 @@
 }
 </style>
 
+<!--
+  Start of all the input fields
+-->
 <main class="container-fluid">
   <h1>Check-in Sheet - Mabel Cook</h1>
 
@@ -65,6 +76,10 @@
     </select>
   </p>
 
+<!--
+  This is for the two buttons
+  One adds to the table and the other writes the table out to a spreadsheet
+-->
   <button id="btnAdd" class="btn btn-primary" onclick="insert()">Add to table</button>
   <style>
     #btnAdd {
@@ -85,11 +100,9 @@
 </main>
 
 <body>
-  <p>
-
-
-  </p>
-
+  <!--
+    This is the start of te table, laying it out and setting it up
+  -->
   <table class="table" id="dataTable">
     <thead class="thead-dark">
       <tr>
@@ -107,6 +120,9 @@
 
   <a id="dlink" style="display:none;"></a>
 
+  <!--
+    This is setting up the table to insert rows with the current fields from the input fields
+  -->
   <script>
     function addToTable(a, b, c, d, e) {
       var table = document.getElementById("dataTable");
@@ -136,6 +152,8 @@
       var e = document.getElementById('reason').value
       addToTable(a, b, c, d, e)
     }
+  
+  //This is the code to generate the spreadsheet
 	//The code for the below function is from this link:
 	//https://gist.github.com/insin/1031969
     var tableToExcel = (function () {
