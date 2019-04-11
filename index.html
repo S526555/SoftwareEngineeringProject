@@ -75,7 +75,6 @@ This is the baseline for the webpage
       <option value="Other">Other</option>
     </select>
   </p>
-
 <!--
   This is for the two buttons
   One adds to the table and the other writes the table out to a spreadsheet
@@ -83,6 +82,7 @@ This is the baseline for the webpage
   <button id="btnAdd" class="btn btn-primary" onclick="insert()">Add to table</button>
   <style>
     #btnAdd {
+      position:relative;
       border: 1px solid black;
       float:left;
     }
@@ -101,7 +101,7 @@ This is the baseline for the webpage
 
 <body>
   <!--
-    This is the start of te table, laying it out and setting it up
+    This is the start of the table, laying it out and setting it up
   -->
   <table class="table" id="dataTable">
     <thead class="thead-dark">
