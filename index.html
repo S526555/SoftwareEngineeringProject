@@ -88,12 +88,20 @@ This is the baseline for the webpage
     }
     </style>
 
+  <button id="btnDelete" class="btn btn-primary"onclick="deleteFirstRow()">Delete First Row</button>
+  <style>
+      #btnDelete {
+        position:relative;
+        border: 1px solid black;
+      }
+      </style>
+
   <button id="btnExcel" class="btn btn-primary" onclick="tableToExcel('dataTable', 'name', 'file.xls')">Generate
   spreadsheet</button>
   <style>
     #btnExcel {
       position:relative;
-      left: 1040px;
+      left: 910px;
       border: 1px solid black;
     }
     </style>
@@ -152,7 +160,9 @@ This is the baseline for the webpage
       var e = document.getElementById('reason').value
       addToTable(a, b, c, d, e)
     }
-  
+    function deleteFirstRow() {
+  document.getElementById("dataTable").deleteRow(0+1);
+}
   //This is the code to generate the spreadsheet
 	//The code for the below function is from this link:
 	//https://gist.github.com/insin/1031969
