@@ -11,7 +11,7 @@
         <label for = "Password">Password:</label>
             <input type = "password" id = "Password" name = "Password">
         <div id = "Lower">
-            <input type = "button" value = "Login" onclick = "location.href = 'index.html'">
+            <input type = "button" value = "Login" onclick = "check(this.form)">
         </div>
     </form>
 </div>
@@ -116,3 +116,13 @@ input[type=button] {
 }
 
 </style>
+
+<script>
+function check(form){
+    if(form.Username.value == "MabelCook" && form.Password.value == "NWMSURocks"){
+        window.open('index.html')
+    } else {
+            alert("Incorrect Username or Password")
+    }
+}
+</script>
