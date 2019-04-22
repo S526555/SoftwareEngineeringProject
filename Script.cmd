@@ -3,5 +3,5 @@ npm install
 node app.js
 Start iexplore.exe
 $Browser=new-object -com internetexplorer.application
-$Browser.navigate2("192.168.0.1 :3000")
+$Browser.navigate2("192.168.0.1:3000")
 $Browser.visible=$true
