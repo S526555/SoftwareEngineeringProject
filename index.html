@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang='en'>
 
+<!--
+This is the baseline for the webpage
+-->
 <head>
   <title>Sign In/Out</title>
   <script src="tableToExcel.js"></script>
@@ -11,32 +14,42 @@
   <script src="public/app.js"></script>
 </head>
 
+<!--
+  This is for the green background bar on the top of the webpage
+-->
 <div class="foo green"></div>
 
 <style>
 .foo {
+  position: relative;
+  background:image-set();
   float:right;
-  width: 1307px;
-  height: 51px;
+  width: 1450px;
+  height: 50px;
+  left: 0%;
 }
 
 .green {
   background: green;
 }
 </style>
-
+<!--
+  Picture from the project folder
+-->
 <div id="NWPic">
-  <img src="Northwest.png" width = "40" height = "50" class="ribbon"/>
+  <img src="NWLogo.jpg" width = "175" height = "50" class="ribbon"/>
 </div>
 
 <style>
 #NWPic {
-  border: 1px solid;
-  border-right: -5px solid;
-  border-color: green;
+  position: absolute;
+  margin-left: 0px;
 }
 </style>
 
+<!--
+  Start of all the input fields
+-->
 <main class="container-fluid">
   <h1>Check-in Sheet - Mabel Cook</h1>
 
@@ -63,32 +76,43 @@
       <option value="Other">Other</option>
     </select>
   </p>
-
+<!--
+  This is for the two buttons
+  One adds to the table and the other writes the table out to a spreadsheet
+-->
   <button id="btnAdd" class="btn btn-primary" onclick="insert()">Add to table</button>
   <style>
     #btnAdd {
+      position:relative;
       border: 1px solid black;
       float:left;
     }
     </style>
+
+  <button id="btnDelete" class="btn btn-primary"onclick="deleteFirstRow()">Delete First Row</button>
+  <style>
+      #btnDelete {
+        position:relative;
+        border: 1px solid black;
+        left: 36%;
+      }
+      </style>
 
   <button id="btnExcel" class="btn btn-primary" onclick="tableToExcel('dataTable', 'name', 'file.xls')">Generate
   spreadsheet</button>
   <style>
     #btnExcel {
       position:relative;
-      left: 1040px;
+      left: 910px;
       border: 1px solid black;
     }
     </style>
 </main>
 
 <body>
-  <p>
-
-
-  </p>
-
+  <!--
+    This is the start of the table, laying it out and setting it up
+  -->
   <table class="table" id="dataTable">
     <thead class="thead-dark">
       <tr>
@@ -106,6 +130,9 @@
 
   <a id="dlink" style="display:none;"></a>
 
+  <!--
+    This is setting up the table to insert rows with the current fields from the input fields
+  -->
   <script>
     function addToTable(a, b, c, d, e) {
       var table = document.getElementById("dataTable");
@@ -126,15 +153,19 @@
         table.rows[index].cells[0].innerHTML = "<strong>" + parseInt(table.rows.length - index) + "</strong>";
       }
     }
-
+  
     function insert() {
       var a = document.getElementById('stuNum').value
-      var b = document.getElementById('start').value
+      var b = document.getElementById('start').value      
       var c = document.getElementById('timeIn').value
       var d = document.getElementById('timeOut').value
       var e = document.getElementById('reason').value
       addToTable(a, b, c, d, e)
     }
+    function deleteFirstRow() {
+  document.getElementById("dataTable").deleteRow(0+1);
+}
+  //This is the code to generate the spreadsheet
 	//The code for the below function is from this link:
 	//https://gist.github.com/insin/1031969
     var tableToExcel = (function () {
