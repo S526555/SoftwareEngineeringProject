@@ -83,18 +83,19 @@ This is the baseline for the webpage
   <button id="btnAdd" class="btn btn-primary" onclick="insert()">Add to table</button>
   <style>
     #btnAdd {
-      position:relative;
+      position:absolute;
       border: 1px solid black;
       float:left;
+      left: 0%;
     }
-    </style>
+  </style>
 
   <button id="btnDelete" class="btn btn-primary"onclick="deleteFirstRow()">Delete First Row</button>
   <style>
       #btnDelete {
         position:relative;
         border: 1px solid black;
-        left: 36%;
+        left: 45%;
       }
       </style>
 
@@ -102,8 +103,8 @@ This is the baseline for the webpage
   spreadsheet</button>
   <style>
     #btnExcel {
-      position:relative;
-      left: 910px;
+      position:absolute;
+      right: 0%;
       border: 1px solid black;
     }
     </style>
@@ -162,9 +163,22 @@ This is the baseline for the webpage
       var e = document.getElementById('reason').value
       addToTable(a, b, c, d, e)
     }
+
     function deleteFirstRow() {
-  document.getElementById("dataTable").deleteRow(0+1);
+      document.getElementById("dataTable").deleteRow(0+1);
+    }
+
+    function formatAMPM(date) {
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? 'pm' : 'am';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+      return strTime;
 }
+
   //This is the code to generate the spreadsheet
 	//The code for the below function is from this link:
 	//https://gist.github.com/insin/1031969
